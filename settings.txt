@@ -35,4 +35,8 @@ sudo nano /etc/default/gr ub
       GRUB_TIMEOUT=0
       GRUB_TIMEOUT_STYLE=hidden 
 
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+sudo systemctl mask systemd-boot-system-token.service
+
 
