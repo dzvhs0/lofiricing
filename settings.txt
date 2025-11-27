@@ -19,3 +19,9 @@ sudo nano /usr/local/bin/unbind-sata-nvme.sh
          if [ -e /sys/bus/pci/devices/$PCI_NVME/driver ]; then
            echo -n $PCI_NVME > /sys/bus/pci/devices/$PCI_NVME/driver/unbind
          fi
+
+suudo pacman -S git
+
+sudo nano ~/.config/hypr/hyprland.conf
+      grp:alt_shift_toggle
+
