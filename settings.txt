@@ -1,0 +1,3 @@
+ sudo nano /etc/mkinitcpio.conf
+ sudo pacman -S nvidia-dkms nvidia-utils nvidia-settings
+ sudo mkinitcpio -P
