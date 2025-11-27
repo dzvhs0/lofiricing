@@ -45,3 +45,7 @@ cd yay
 makepkg -si
 
 
+     GRUB_RECORDFAIL_TIMEOUT=$GRUB_TIMEOUT
+     sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+
