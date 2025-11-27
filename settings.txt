@@ -1,3 +1,21 @@
  sudo nano /etc/mkinitcpio.conf
  sudo pacman -S nvidia-dkms nvidia-utils nvidia-settings
  sudo mkinitcpio -P
+
+
+sudo nano /usr/local/bin/unbind-sata-nvme.sh 
+         #!/bin/bash
+         
+         # PCI-адреса твоих контроллеров
+         PCI_SATA="0000:00:1f.2"
+         PCI_NVME="0000:01:00.0"
+         
+         # unbind SATA
+         if [ -e /sys/bus/pci/devices/$PCI_SATA/driver ]; then
+           echo -n $PCI_SATA > /sys/bus/pci/devices/$PCI_SATA/driver/unbind
+         fi
+         
+         # unbind NVMe
+         if [ -e /sys/bus/pci/devices/$PCI_NVME/driver ]; then
+           echo -n $PCI_NVME > /sys/bus/pci/devices/$PCI_NVME/driver/unbind
+         fi
