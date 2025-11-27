@@ -31,4 +31,8 @@ sudo nano /etc/sddm.conf
       User=crtuser
       Session=hyprland.desktop
 
+sudo nano /etc/default/gr ub 
+      GRUB_TIMEOUT=0
+      GRUB_TIMEOUT_STYLE=hidden 
+
 
