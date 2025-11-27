@@ -25,3 +25,10 @@ suudo pacman -S git
 sudo nano ~/.config/hypr/hyprland.conf
       grp:alt_shift_toggle
 
+
+sudo nano /etc/sddm.conf
+      [Autologin]
+      User=crtuser
+      Session=hyprland.desktop
+
+
