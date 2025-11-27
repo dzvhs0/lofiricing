@@ -39,4 +39,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 sudo systemctl mask systemd-boot-system-token.service
 
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
 
