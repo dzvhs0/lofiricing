@@ -20,6 +20,15 @@ sudo nano /usr/local/bin/unbind-sata-nvme.sh
            echo -n $PCI_NVME > /sys/bus/pci/devices/$PCI_NVME/driver/unbind
          fi
 
+sudo chmod +x /usr/local/bin/unbind-sata-nvme.sh
+
+sudo nano /etc/udev/rules.d/99-unbind-sata-nvme.rules
+
+ACTION=="pci_slot", SUBSYSTEM=="pci", RUN+="/usr/local/bin/unbind-sata-nvme.sh"
+ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0x1e02", RUN+="/usr/local/bin/unbind-sata-nvme.sh"
+ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x1d89", ATTR{device}=="0xef25", RUN+="/usr/local/bin/unbind-sata-nvme.sh"
+
+
 suudo pacman -S git
 
 sudo nano ~/.config/hypr/hyprland.conf
