@@ -4,21 +4,23 @@
 
 
 sudo nano /usr/local/bin/unbind-sata-nvme.sh 
-         #!/bin/bash
+
+
+#!/bin/bash
          
-         # PCI-адреса твоих контроллеров
-         PCI_SATA="0000:00:1f.2"
-         PCI_NVME="0000:01:00.0"
+# PCI-адреса твоих контроллеров
+PCI_SATA="0000:00:1f.2"
+PCI_NVME="0000:01:00.0"
          
-         # unbind SATA
-         if [ -e /sys/bus/pci/devices/$PCI_SATA/driver ]; then
-           echo -n $PCI_SATA > /sys/bus/pci/devices/$PCI_SATA/driver/unbind
-         fi
+# unbind SATA
+if [ -e /sys/bus/pci/devices/$PCI_SATA/driver ]; then
+  echo -n $PCI_SATA > /sys/bus/pci/devices/$PCI_SATA/driver/unbind
+fi
          
-         # unbind NVMe
-         if [ -e /sys/bus/pci/devices/$PCI_NVME/driver ]; then
-           echo -n $PCI_NVME > /sys/bus/pci/devices/$PCI_NVME/driver/unbind
-         fi
+# unbind NVMe
+if [ -e /sys/bus/pci/devices/$PCI_NVME/driver ]; then
+  echo -n $PCI_NVME > /sys/bus/pci/devices/$PCI_NVME/driver/unbind
+fi
 
 sudo chmod +x /usr/local/bin/unbind-sata-nvme.sh
 
@@ -36,13 +38,15 @@ sudo nano ~/.config/hypr/hyprland.conf
 
 
 sudo nano /etc/sddm.conf
-      [Autologin]
-      User=crtuser
-      Session=hyprland.desktop
 
-sudo nano /etc/default/gr ub 
-      GRUB_TIMEOUT=0
-      GRUB_TIMEOUT_STYLE=hidden 
+[Autologin]
+User=crtuser
+Session=hyprland.desktop
+
+sudo nano /etc/default/grub 
+
+GRUB_TIMEOUT=0
+GRUB_TIMEOUT_STYLE=hidden 
 
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -53,11 +57,11 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
+yay install grub-silent
 
-     GRUB_RECORDFAIL_TIMEOUT=$GRUB_TIMEOUT
+GRUB_RECORDFAIL_TIMEOUT=$GRUB_TIMEOUT
 
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-sudo pacman -S waybar
 
 
