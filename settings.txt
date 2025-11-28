@@ -59,6 +59,8 @@ makepkg -si
 
 yay install grub-silent
 
+sudo nano /etc/default/grub 
+
 GRUB_RECORDFAIL_TIMEOUT=$GRUB_TIMEOUT
 
 sudo grub-mkconfig -o /boot/grub/grub.cfg
